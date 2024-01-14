@@ -63,21 +63,20 @@ class BaseModel:
         # Output: "<Listing> ID: 14
         -Beachfront Studio in Diani (hosted by ID: 5678)"
         """
-    return '[{}] ({}) {}'.format(
-        self.__class__.__name__, self.id, self.__dict__
-    )
+        return '[{}] ({}) {}'.format(
+            self.__class__.__name__, self.id, self.__dict__
+        )
 
-
-def save(self):
-    """
-    updates the public instance attribute
-    This method is responsible for updating
-    the 'updated_at' attribute
-    with the current datetime and
-    saving the object's state.
-    """
-    self.updated_at = datetime.utcnow()
-    models.storage.save()
+    def save(self):
+        """
+        updates the public instance attribute
+        This method is responsible for updating
+        the 'updated_at' attribute
+        with the current datetime and
+        saving the object's state.
+        """
+        self.updated_at = datetime.utcnow()
+        models.storage.save()
 
     def to_dict(self):
         """
