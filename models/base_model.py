@@ -46,26 +46,27 @@ class BaseModel:
                 if k not in ['updated_at', 'created_at', '__class__']:
                     self.__setattr__(k, v)
 
-    def __str__(self):
-        """
-        Generates a descriptive string summarizing
-        the listing or user information.
 
-        Returns:
-        A string containing:
-        - Class name (e.g., `Listing` or `User`)
-        - Key attributes like `title`, `location`, or `username`
-        - Relevant IDs (e.g., listing ID or user ID) if applicable
+def __str__(self):
+    """
+    Generates a descriptive string summarizing
+    the listing or user information.
 
-        Example:
-        # Assuming a listing with ID 14 and host ID 5678
-        str(my_listing)
-        # Output: "<Listing> ID: 14
-        -Beachfront Studio in Diani (hosted by ID: 5678)"
-        """
-        return '[{}] ({}) {}'.format(
-            self.__class__.__name__, self.id, self.__dict__
-        )
+    Returns:
+    A string containing:
+    - Class name (e.g., `Listing` or `User`)
+    - Key attributes like `title`, `location`, or `username`
+    - Relevant IDs (e.g., listing ID or user ID) if applicable
+
+    Example:
+    # Assuming a listing with ID 14 and host ID 5678
+    str(my_listing)
+    # Output: "<Listing> ID: 14
+    -Beachfront Studio in Diani (hosted by ID: 5678)"
+    """
+    return "[{}] ({}) {}".format(
+        self.__class__.__name__, self.id, self.__dict__
+    )
 
     def save(self):
         """
