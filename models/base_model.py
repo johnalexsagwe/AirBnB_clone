@@ -46,31 +46,30 @@ class BaseModel:
                 if k not in ['updated_at', 'created_at', '__class__']:
                     self.__setattr__(k, v)
 
+    def __str__(self):
+        """
+        Generates a descriptive string summarizing
+        the listing or user information.
 
-def __str__(self):
-    """
-    Generates a descriptive string summarizing
-    the listing or user information.
+        Returns:
+        A string containing:
+        - Class name (e.g., `Listing` or `User`)
+        - Key attributes like `title`, `location`, or `username`
+        - Relevant IDs (e.g., listing ID or user ID) if applicable
 
-    Returns:
-    A string containing:
-    - Class name (e.g., `Listing` or `User`)
-    - Key attributes like `title`, `location`, or `username`
-    - Relevant IDs (e.g., listing ID or user ID) if applicable
-
-    Example:
-    # Assuming a listing with ID 14 and host ID 5678
-    str(my_listing)
-    # Output: "<Listing> ID: 14
-    -Beachfront Studio in Diani (hosted by ID: 5678)"
-    """
-    return "[{}] ({}) {}".format(
-        self.__class__.__name__, self.id, self.__dict__
-    )
+        Example:
+        # Assuming a listing with ID 14 and host ID 5678
+        str(my_listing)
+        # Output: "<Listing> ID: 14
+        -Beachfront Studio in Diani (hosted by ID: 5678)"
+        """
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__
+        )
 
     def save(self):
         """
-        updates the public instance attribute
+        Updates the public instance attribute.
         This method is responsible for updating
         the 'updated_at' attribute
         with the current datetime and
@@ -83,7 +82,7 @@ def __str__(self):
         """
         Returns a dictionary representation of the BaseModel instance.
         Return-:
-        a dictionary that mirrors the object's attributes,
+        A dictionary that mirrors the object's attributes,
         including its class name,
         while formatting timestamps as ISO strings.
         """
